@@ -3,7 +3,7 @@
 
 template<class T>
 void insertionSort(T* array, int size)
-{
+{   
     int target, location;
     T key;
 
@@ -16,7 +16,7 @@ void insertionSort(T* array, int size)
                 array[location] = array[location-1];
                 location--;
             }
-            while(location>1 && array[location-1]>key);
+            while(location>0 && array[location-1]>key);
             
             array[location] = key;
         }
@@ -29,21 +29,24 @@ int main() {
     int randomVal;
     srand(time(0));
 
+    std::cout << "|Before Sort|" << std::endl;
+
     // generate randomized array and print
     for(int i; i<size; i++){
         randomVal = rand() % 100;
         array[i] = randomVal;
-        std:: cout << array[i] << std::endl;
+        std:: cout << array[i] << " ";
     }
+
+    std::cout << "\n|After Sort|" << std::endl;
 
     // insertion sort
     insertionSort(array, size);
 
     // print array
     for(int i: array){
-        std::cout << i << std::endl; 
+        std::cout << i << " "; 
     }
-        
 
     std::cout << "Compelete" << std::endl;
 }
